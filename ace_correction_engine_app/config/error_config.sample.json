@@ -1,0 +1,63 @@
+[
+  {
+    "errorCode": "465",
+    "severity": "I",
+    "description": "ARTICLE MAY BE SUBJECT TO AD/CVD",
+    "scope": "LINE_TARIFF",
+    "responseContext": { "e0ReferenceType": "TARIFF" },
+    "requestLocator": {
+      "recordId": "50",
+      "fieldName": "hts_number",
+      "matchBy": { "lineNoFromE0": true, "htsFromE0": true }
+    },
+    "uiTarget": {
+      "view": "LineItemTariffView",
+      "section": "Tariff",
+      "field": "htsNumber",
+      "label": "HTS Number",
+      "component": "TextInput"
+    },
+    "validation": { "required": true, "length": 10, "pattern": "^[0-9]{10}$" }
+  },
+  {
+    "errorCode": "009",
+    "severity": "F",
+    "description": "MANUFACTURER ID CODE UNKNOWN",
+    "scope": "LINE_PARTY",
+    "responseContext": { "e0ReferenceType": "ARPART" },
+    "requestLocator": {
+      "recordId": "47",
+      "fieldName": "party_id",
+      "partyType": "M",
+      "matchBy": { "lineNoFromE0": true, "partyType": "M" }
+    },
+    "uiTarget": {
+      "view": "LineItemPartyView",
+      "section": "Manufacturer",
+      "field": "manufacturerId",
+      "label": "Manufacturer ID",
+      "component": "TextInput"
+    },
+    "validation": { "required": true, "maxLength": 15, "pattern": "^[A-Z0-9 -]{1,15}$" }
+  },
+  {
+    "errorCode": "995",
+    "severity": "I",
+    "description": "SUMMARY HAS BEEN ADDED",
+    "scope": "ENTRY_STATUS",
+    "responseContext": { "e0ReferenceType": "SUMMRY" },
+    "requestLocator": {
+      "recordId": "10",
+      "fieldName": "entry_no",
+      "matchBy": { "entryNumberFromE1": true }
+    },
+    "uiTarget": {
+      "view": "EntrySummaryView",
+      "section": "Status",
+      "field": "entryNumber",
+      "label": "Entry Number",
+      "component": "ReadOnlyText"
+    },
+    "validation": { "required": false, "maxLength": 8 }
+  }
+]
